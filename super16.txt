@@ -1,0 +1,23 @@
+for i in *
+do
+if [ -f $i ]
+then
+x=`ls -l $i | cut -c 45-47`
+echo "$x"
+if [ $x -ge 6 -a $x -lt 12 ]
+then
+echo "$i: morning" >>b1
+elif [ $x -ge 12 -a $x -lt 16 ]
+then
+echo "$i: afternoon" >>b1
+elif [ $x -ge 16 -a $x -lt 20 ]
+then
+echo "$i: evening" >>b1
+else
+echo "$i: goodnight" >>b1
+fi
+cat b1
+else
+echo "File does not exist"
+fi
+done
